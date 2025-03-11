@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://chw2tic5t5qmn"]
+
+[ext_resource type="Texture2D" uid="uid://dre8cx86xnmjh" path="res://assets/Sprite Pack 8/4 - Percy/Fireball_Projectile (16 x 16).png" id="1_51gij"]
+[ext_resource type="Script" uid="uid://dw6yr1dauoyb6" path="res://scripts/fire_ball.gd" id="1_qddq2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qddq2"]
+radius = 3.99993
+height = 15.9998
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_une7w"]
+atlas = ExtResource("1_51gij")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggq3o"]
+atlas = ExtResource("1_51gij")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kry06"]
+atlas = ExtResource("1_51gij")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0voa0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_une7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ggq3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kry06")
+}],
+"loop": true,
+"name": &"fire_ball",
+"speed": 5.0
+}]
+
+[node name="fire_ball" type="Area2D"]
+script = ExtResource("1_qddq2")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(7.62939e-06, 0)
+rotation = -1.56546
+shape = SubResource("CapsuleShape2D_qddq2")
+
+[node name="anim" type="AnimatedSprite2D" parent="collision"]
+position = Vector2(-3.99995, 0.0213573)
+rotation = 1.57188
+scale = Vector2(1.11109, 1.13498)
+sprite_frames = SubResource("SpriteFrames_0voa0")
+animation = &"fire_ball"
+
+[node name="visibility" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="visibility" to="." method="_on_visibility_screen_exited"]
