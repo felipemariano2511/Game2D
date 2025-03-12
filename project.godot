@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Game2D"
-run/main_scene="uid://ciiya6ycj2m5v"
-config/features=PackedStringArray("4.4", "Mobile")
+run/main_scene="res://scenes/world_1.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [display]
@@ -64,7 +64,8 @@ attack={
 2d_physics/layer_1="player"
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemies"
-2d_physics/layer_4="items"
+2d_physics/layer_4="attack"
+2d_physics/layer_5="items"
 
 [rendering]
 

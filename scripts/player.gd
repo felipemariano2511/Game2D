@@ -19,7 +19,10 @@ func _physics_process(delta: float) -> void:
 		if velocity.x != 0 and !is_attacking:
 			$anim.play("run")
 		elif !is_attacking:
-			$anim.play("idle")
+			if is_on_floor() and Input.is_action_just_pressed("down"):
+				$anim.play("lading")
+			else:
+				$anim.play("idle")
 
 	# Lidar com o pulo.
 	if is_on_floor() and Input.is_action_just_pressed("jump"):

@@ -1,11 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://chw2tic5t5qmn"]
 
-[ext_resource type="Script" uid="uid://dw6yr1dauoyb6" path="res://scripts/fire_ball.gd" id="1_8k2od"]
+[ext_resource type="Script" path="res://scripts/fire_ball.gd" id="1_8k2od"]
 [ext_resource type="Texture2D" uid="uid://dre8cx86xnmjh" path="res://sprites/Sprite Pack 8/4 - Percy/Fireball_Projectile (16 x 16).png" id="2_c1v3w"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qddq2"]
-radius = 3.99994
-height = 7.99989
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_une7w"]
 atlas = ExtResource("2_c1v3w")
@@ -32,14 +28,26 @@ animations = [{
 "texture": SubResource("AtlasTexture_kry06")
 }],
 "loop": true,
-"name": &"fire_ball",
+"name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qddq2"]
+radius = 3.99994
+height = 7.99989
 
 [node name="fire_ball" type="Area2D"]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("1_8k2od")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 4)
+rotation = 0.00642002
+scale = Vector2(1.11109, 1.13498)
+sprite_frames = SubResource("SpriteFrames_0voa0")
+animation = &"idle"
+frame_progress = 0.452343
 
 [node name="collision" type="CollisionShape2D" parent="."]
 light_mask = 8
@@ -47,13 +55,6 @@ visibility_layer = 6
 position = Vector2(1, 0)
 rotation = -1.56546
 shape = SubResource("CapsuleShape2D_qddq2")
-
-[node name="anim" type="AnimatedSprite2D" parent="collision"]
-position = Vector2(-4.01595, -2.97861)
-rotation = 1.57188
-scale = Vector2(1.11109, 1.13498)
-sprite_frames = SubResource("SpriteFrames_0voa0")
-animation = &"fire_ball"
 
 [node name="visibility" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-2, 0)
