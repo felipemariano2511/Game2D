@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://chw2tic5t5qmn"]
 
-[ext_resource type="Script" path="res://scripts/fire_ball.gd" id="1_8k2od"]
+[ext_resource type="Script" uid="uid://dw6yr1dauoyb6" path="res://scripts/fire_ball.gd" id="1_8k2od"]
 [ext_resource type="Texture2D" uid="uid://dre8cx86xnmjh" path="res://sprites/Sprite Pack 8/4 - Percy/Fireball_Projectile (16 x 16).png" id="2_c1v3w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_une7w"]

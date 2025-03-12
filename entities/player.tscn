@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://ct0gd5cmjpimd"]
 
-[ext_resource type="Script" path="res://entities/player.gd" id="1_2t7na"]
+[ext_resource type="Script" uid="uid://cxxbbkc0x3iut" path="res://entities/player.gd" id="1_2t7na"]
 [ext_resource type="Texture2D" uid="uid://clmq2s8i1mpod" path="res://sprites/Sprite Pack 8/4 - Percy/Idle (32 x 32).png" id="1_kd51k"]
 [ext_resource type="Texture2D" uid="uid://df60lmmc5xm16" path="res://sprites/Sprite Pack 8/4 - Percy/Aerial_Shooting_Fireball (32 x 32).png" id="2_nms0r"]
 [ext_resource type="Texture2D" uid="uid://feinlnpxoqqp" path="res://sprites/Sprite Pack 8/4 - Percy/Running (32 x 32).png" id="3_3xuk1"]

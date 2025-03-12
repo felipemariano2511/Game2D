@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 80.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -280.0
 const FIREBALL := preload("res://item/fire_ball.tscn")
 const ATTACK_DELAY = 0.8  # Tempo entre ataques
 
