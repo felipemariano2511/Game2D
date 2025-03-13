@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1pv3rbeqx1uu"]
+
+[ext_resource type="Script" uid="uid://n21cpy4sgcdj" path="res://scripts/death_menu.gd" id="1_gm7js"]
+[ext_resource type="Texture2D" uid="uid://dphujgpkq2wep" path="res://assets/images/you_lose.png" id="1_latkk"]
+
+[node name="death_menu" type="Node2D"]
+script = ExtResource("1_gm7js")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(150, 75)
+scale = Vector2(0.248333, 0.126667)
+texture = ExtResource("1_latkk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button_start" type="Button" parent="CanvasLayer"]
+offset_left = 58.0
+offset_top = 104.0
+offset_right = 116.0
+offset_bottom = 135.0
+text = "start"
+
+[node name="Button_quit" type="Button" parent="CanvasLayer"]
+offset_left = 165.0
+offset_top = 101.0
+offset_right = 242.0
+offset_bottom = 132.0
+text = "quit"
+
+[node name="Dino Aventure" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 0.933333, 0.247059, 1)
+self_modulate = Color(1, 2.21, 0, 1)
+offset_left = 105.0
+offset_top = 2.0
+offset_right = 217.0
+offset_bottom = 25.0
+justification_flags = 171
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="CanvasLayer/Button_start" to="." method="_on_button_start_button_down"]
+[connection signal="button_down" from="CanvasLayer/Button_quit" to="." method="_on_button_quit_button_down"]

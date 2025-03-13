@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ciiya6ycj2m5v"]
+[gd_scene load_steps=38 format=3 uid="uid://ciiya6ycj2m5v"]
 
 [ext_resource type="Texture2D" uid="uid://cuwy8ivq6qstf" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_kwwa1"]
 [ext_resource type="Script" uid="uid://bxuel0su36adg" path="res://scripts/world_1.gd" id="1_us2e2"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cjm2io4ucmdll" path="res://scripts/health.gd" id="17_un572"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_un572"]
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="19_pd0bf"]
+[ext_resource type="PackedScene" uid="uid://bmebq4qoaiaeh" path="res://prefabs/heart.tscn" id="21_2nf73"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_03p0r"]
 shader = ExtResource("8_6deva")
@@ -430,10 +431,6 @@ drag_bottom_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="player" parent="." instance=ExtResource("3_cmxnd")]
-position = Vector2(14, 120)
-collision_mask = 2
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Health" type="ColorRect" parent="HUD"]
@@ -454,7 +451,7 @@ color = Color(1, 0.32549, 0.258824, 0.72549)
 
 [node name="anim" type="AnimatedSprite2D" parent="HUD/Health"]
 sprite_frames = SubResource("SpriteFrames_n2uhg")
-frame_progress = 0.876069
+frame_progress = 0.789777
 
 [node name="Mana" type="ColorRect" parent="HUD"]
 offset_left = 9.0
@@ -475,7 +472,24 @@ color = Color(0.372831, 0.714315, 0.636821, 1)
 [node name="anim" type="AnimatedSprite2D" parent="HUD/Mana"]
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jvnjm")
-frame_progress = 0.814409
+frame_progress = 0.545376
 
-[connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
-[connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
+[node name="heart" type="Node2D" parent="."]
+
+[node name="heart1" parent="heart" instance=ExtResource("21_2nf73")]
+position = Vector2(594, -10)
+
+[node name="heart2" parent="heart" instance=ExtResource("21_2nf73")]
+position = Vector2(301, 24)
+
+[node name="heart3" parent="heart" instance=ExtResource("21_2nf73")]
+position = Vector2(84, 87)
+
+[node name="heart4" parent="heart" instance=ExtResource("21_2nf73")]
+position = Vector2(118, -21)
+
+[node name="player" parent="." instance=ExtResource("3_cmxnd")]
+position = Vector2(14, 120)
+collision_mask = 2
+
+[connection signal="area_entered" from="heart/heart1" to="player" method="_on_heart_1_area_entered"]

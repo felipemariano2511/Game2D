@@ -22,7 +22,6 @@ var max_mana := 70.0
 var mana_recovery := 1.3
 var collect_heart := false
 
-signal player_stats_changed
 
 func _ready() -> void:
 	emit_signal("player_stats_changed", self)
@@ -37,9 +36,9 @@ func _process(delta: float) -> void:
 	var health_recovery := 0.0000000001 if !collect_heart else 20.0	
 	var new_health = min(health + health_recovery * delta, max_health)
 	
-	print (new_health)
 	if new_health != health:
 		health = new_health
+		collect_heart = false
 		emit_signal("player_stats_changed", self)
 
 func _physics_process(delta: float) -> void:
@@ -125,12 +124,11 @@ func cast_fireball():
 	is_attacking = false
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("enemies"):
-		#queue_free()
 	var direction := Input.get_axis("left", "right")
 	
 	if health <= 0:
 		queue_free()
+		get_tree().change_scene_to_file("res://scenes/death_menu.tscn")
 	else:
 		if ray_right.is_colliding():
 			take_damage(Vector2(-150,-150))
@@ -156,7 +154,7 @@ func follow_camera(camera):
 	
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	health -= 33.33
-	
+		
 	if knockback_force != Vector2.ZERO:
 		
 		knockback_vector = knockback_force
@@ -169,3 +167,10 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	is_hurted = true
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
+
+	
+
+
+func _on_heart_1_area_entered(area: Area2D) -> void:
+		if area.name == "hearts":
+			collect_heart = true
