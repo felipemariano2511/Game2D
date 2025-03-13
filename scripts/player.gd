@@ -22,24 +22,34 @@ var max_mana := 70.0
 var mana_recovery := 1.3
 var collect_heart := false
 
+signal player_stats_changed
+
 
 func _ready() -> void:
 	emit_signal("player_stats_changed", self)
+	var item = get_node("hearts")
+	#item.connect("collected", self, "_on_hearts_collect")
 	
 func _process(delta: float) -> void:
-		
+	var health_recovery := 0.0 if !collect_heart else 20.0
 	var new_mana = min(mana + mana_recovery * delta, max_mana)
 	if new_mana != mana:
 		mana = new_mana
 		emit_signal("player_stats_changed", self)
 		
-	var health_recovery := 0.0000000001 if !collect_heart else 20.0	
-	var new_health = min(health + health_recovery * delta, max_health)
+	#var health_recovery := 0.0000000001 if !collect_heart else 20.0
+	#var new_health = min(health + health_recovery * delta, max_health)	
 	
-	if new_health != health:
+	var new_health = health + health_recovery
+	
+	if new_health > 100:
+		new_health = 100
+	
+	if new_health != health and new_health < 101:
 		health = new_health
-		collect_heart = false
 		emit_signal("player_stats_changed", self)
+		if collect_heart:
+			collect_heart = false
 
 func _physics_process(delta: float) -> void:
 	# Adicionar gravidade.
@@ -127,7 +137,6 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	var direction := Input.get_axis("left", "right")
 	
 	if health <= 0:
-		queue_free()
 		get_tree().change_scene_to_file("res://scenes/death_menu.tscn")
 	else:
 		if ray_right.is_colliding():
@@ -168,9 +177,5 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
 
-	
-
-
-func _on_heart_1_area_entered(area: Area2D) -> void:
-		if area.name == "hearts":
-			collect_heart = true
+func _on_hearts_collected() -> void:
+	collect_heart = true

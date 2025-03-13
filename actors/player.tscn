@@ -378,5 +378,6 @@ position = Vector2(5, 10)
 target_position = Vector2(-19, 0)
 collision_mask = 4
 
+[connection signal="player_stats_changed" from="." to="." method="_on_player_stats_changed"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="animation_finished" from="anim" to="hurtbox" method="_on_anim_animation_finished"]

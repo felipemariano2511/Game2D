@@ -1,27 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmebq4qoaiaeh"]
+[gd_scene load_steps=9 format=3 uid="uid://bmebq4qoaiaeh"]
 
 [ext_resource type="Texture2D" uid="uid://b8pe1hjqlx76d" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Heart_Spin (16 x 16).png" id="1_4mng4"]
-[ext_resource type="Texture2D" uid="uid://cximkkep82uqc" path="res://assets/Mini FX, Items & UI/Effects/Bright_Sparkle (16 x 16).png" id="1_sjtqc"]
 [ext_resource type="Script" uid="uid://dpqhsca1fbp3y" path="res://scripts/heart.gd" id="1_sjxak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjtqc"]
 size = Vector2(8, 9)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjxak"]
-atlas = ExtResource("1_sjtqc")
-region = Rect2(0, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltfwj"]
-atlas = ExtResource("1_sjtqc")
-region = Rect2(20, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jjtn"]
-atlas = ExtResource("1_sjtqc")
-region = Rect2(40, 0, 20, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57bed"]
-atlas = ExtResource("1_sjtqc")
-region = Rect2(60, 0, 20, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_25xq5"]
 atlas = ExtResource("1_4mng4")
@@ -41,23 +24,6 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_25xq5"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sjxak")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ltfwj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6jjtn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_57bed")
-}],
-"loop": false,
-"name": &"collect",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_25xq5")
@@ -80,7 +46,7 @@ animations = [{
 collision_layer = 16
 script = ExtResource("1_sjxak")
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="." groups=["hearts"]]
 position = Vector2(-1, 2.5)
 shape = SubResource("RectangleShape2D_sjtqc")
 
@@ -88,7 +54,7 @@ shape = SubResource("RectangleShape2D_sjtqc")
 position = Vector2(9.53674e-07, -3)
 scale = Vector2(1.85938, 1.29688)
 sprite_frames = SubResource("SpriteFrames_25xq5")
-animation = &"collect"
+animation = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
