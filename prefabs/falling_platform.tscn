@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://s3rpgs4vk203"]
+
+[ext_resource type="Script" uid="uid://dpumiew7txm3f" path="res://scripts/falling_platform.gd" id="1_bxcyw"]
+[ext_resource type="Texture2D" uid="uid://b7c4kkedd4k3w" path="res://assets/Seasonal Tilesets/5 - Misc. universal tiles/Blocks (16 x 16).png" id="2_ptv88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8kur"]
+size = Vector2(28, 14)
+
+[sub_resource type="Animation" id="Animation_2dmod"]
+resource_name = "shake"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ptv88")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.101166, 0.200423, 0.301589, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 0), Vector2(0, 0), Vector2(-2, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gkrhf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cg4r8"]
+_data = {
+&"RESET": SubResource("Animation_gkrhf"),
+&"shake": SubResource("Animation_2dmod")
+}
+
+[node name="falling_platform" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_bxcyw")
+
+[node name="texture" type="Sprite2D" parent="."]
+modulate = Color(0.227451, 1, 1, 1)
+texture = ExtResource("2_ptv88")
+region_enabled = true
+region_rect = Rect2(96, 64, 32, 16)
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u8kur")
+one_way_collision = true
+
+[node name="respawn_timer" type="Timer" parent="."]
+
+[node name="anim" type="AnimationPlayer" parent="."]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_cg4r8")
+}
+
+[connection signal="timeout" from="respawn_timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

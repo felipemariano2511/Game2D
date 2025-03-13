@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://chw2tic5t5qmn"]
+[gd_scene load_steps=9 format=3 uid="uid://chw2tic5t5qmn"]
 
 [ext_resource type="Script" uid="uid://dw6yr1dauoyb6" path="res://scripts/fire_ball.gd" id="1_8k2od"]
 [ext_resource type="Texture2D" uid="uid://dre8cx86xnmjh" path="res://sprites/Sprite Pack 8/4 - Percy/Fireball_Projectile (16 x 16).png" id="2_c1v3w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qddq2"]
+radius = 3.99994
+height = 11.9998
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_une7w"]
 atlas = ExtResource("2_c1v3w")
@@ -32,14 +36,21 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qddq2"]
-radius = 3.99994
-height = 7.99989
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8k2od"]
+radius = 4.99973
+height = 15.9992
 
 [node name="fire_ball" type="Area2D"]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("1_8k2od")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+light_mask = 8
+visibility_layer = 6
+position = Vector2(-1, 0)
+rotation = -1.56546
+shape = SubResource("CapsuleShape2D_qddq2")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 4)
@@ -49,15 +60,18 @@ sprite_frames = SubResource("SpriteFrames_0voa0")
 animation = &"idle"
 frame_progress = 0.452343
 
-[node name="collision" type="CollisionShape2D" parent="."]
-light_mask = 8
-visibility_layer = 6
-position = Vector2(1, 0)
-rotation = -1.56546
-shape = SubResource("CapsuleShape2D_qddq2")
-
 [node name="visibility" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-2, 0)
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="collision" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(-1, 0)
+rotation = -1.56049
+shape = SubResource("CapsuleShape2D_8k2od")
+debug_color = Color(0.161502, 0.64444, 1.92523e-07, 0.42)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="visibility" to="." method="_on_visibility_screen_exited"]

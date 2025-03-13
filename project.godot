@@ -65,7 +65,9 @@ attack={
 2d_physics/layer_2="world"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="attack"
-2d_physics/layer_5="items"
+2d_physics/layer_5="collects"
+2d_physics/layer_6="hitbox"
+2d_physics/layer_7="hurtbox"
 
 [rendering]
 
