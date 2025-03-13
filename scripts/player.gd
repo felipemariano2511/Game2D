@@ -11,10 +11,36 @@ const JUMP_VELOCITY = -280.0
 const FIREBALL := preload("res://item/fire_ball.tscn")
 
 var is_attacking := false
-var player_life := 100
 var knockback_vector := Vector2.ZERO
 var is_hurted := false
 
+#variáveis do status do Player
+var health := 100.0
+var max_health := 100.0
+var mana := 100.0
+var max_mana := 70.0
+var mana_recovery := 1.3
+var collect_heart := false
+
+signal player_stats_changed
+
+func _ready() -> void:
+	emit_signal("player_stats_changed", self)
+	
+func _process(delta: float) -> void:
+		
+	var new_mana = min(mana + mana_recovery * delta, max_mana)
+	if new_mana != mana:
+		mana = new_mana
+		emit_signal("player_stats_changed", self)
+		
+	var health_recovery := 0.0000000001 if !collect_heart else 20.0	
+	var new_health = min(health + health_recovery * delta, max_health)
+	
+	print (new_health)
+	if new_health != health:
+		health = new_health
+		emit_signal("player_stats_changed", self)
 
 func _physics_process(delta: float) -> void:
 	# Adicionar gravidade.
@@ -28,7 +54,10 @@ func _physics_process(delta: float) -> void:
 
 	# Inicia o ataque se o botão for pressionado e não estiver atacando.
 	if Input.is_action_just_pressed("attack") and is_on_floor() and !is_attacking:
-		is_attacking = true
+		if mana > 10:
+			is_attacking = true
+			mana = mana - 10
+			emit_signal("player_stats_changed", self)
 
 	# Obter direção de entrada e lidar com movimento/desaceleração.
 	var direction := Input.get_axis("left", "right")
@@ -100,7 +129,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		#queue_free()
 	var direction := Input.get_axis("left", "right")
 	
-	if player_life <= 0:
+	if health <= 0:
 		queue_free()
 	else:
 		if ray_right.is_colliding():
@@ -120,12 +149,13 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 				take_damage(Vector2(-150,-150))
 			else:
 				take_damage(Vector2(150,-150))		
+				
 func follow_camera(camera):
 	var camera_path = camera.get_path()
 	remote_trasnform.remote_path =camera_path
 	
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	player_life -= 1
+	health -= 33.33
 	
 	if knockback_force != Vector2.ZERO:
 		

@@ -395,7 +395,7 @@ position = Vector2(151, 126)
 [node name="enemy2" parent="enemy" instance=ExtResource("15_l6637")]
 
 [node name="enemy3" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(-72, -5)
+position = Vector2(-133, -62)
 
 [node name="enemy4" parent="enemy" instance=ExtResource("15_l6637")]
 position = Vector2(106, -71)
@@ -454,7 +454,7 @@ color = Color(1, 0.32549, 0.258824, 0.72549)
 
 [node name="anim" type="AnimatedSprite2D" parent="HUD/Health"]
 sprite_frames = SubResource("SpriteFrames_n2uhg")
-frame_progress = 0.876069
+frame_progress = 0.430208
 
 [node name="Mana" type="ColorRect" parent="HUD"]
 offset_left = 9.0
@@ -473,9 +473,8 @@ offset_bottom = 8.0
 color = Color(0.372831, 0.714315, 0.636821, 1)
 
 [node name="anim" type="AnimatedSprite2D" parent="HUD/Mana"]
-position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jvnjm")
-frame_progress = 0.814409
+frame_progress = 0.725934
 
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
