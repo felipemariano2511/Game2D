@@ -340,7 +340,7 @@ collision_mask = 4
 script = ExtResource("7_33vod")
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox"]
-position = Vector2(-0.5, 3.5)
+position = Vector2(-1, 4)
 shape = SubResource("RectangleShape2D_tue77")
 debug_color = Color(0.950187, 0.224716, 0, 0.42)
 

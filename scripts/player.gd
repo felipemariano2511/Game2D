@@ -45,7 +45,7 @@ func _process(delta: float) -> void:
 	if new_health > 100:
 		new_health = 100
 	
-	if new_health != health and new_health < 101:
+	if new_health  < 101:
 		health = new_health
 		emit_signal("player_stats_changed", self)
 		if collect_heart:
@@ -162,7 +162,7 @@ func follow_camera(camera):
 	remote_trasnform.remote_path =camera_path
 	
 func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
-	health -= 33.33
+	health -= 33.3
 		
 	if knockback_force != Vector2.ZERO:
 		
