@@ -27,21 +27,26 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8jwji")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_no1gg"]
-size = Vector2(16, 14)
+size = Vector2(61, 17)
 
 [node name="chest" type="Area2D"]
 script = ExtResource("1_c347f")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ibynp")
-frame_progress = 0.0743026
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(2.5, 0.5)
 shape = SubResource("RectangleShape2D_no1gg")
+
+[node name="spawn_heart" type="Marker2D" parent="."]
+position = Vector2(-2, -1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]

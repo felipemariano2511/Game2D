@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ciiya6ycj2m5v"]
+[gd_scene load_steps=40 format=3 uid="uid://ciiya6ycj2m5v"]
 
 [ext_resource type="Texture2D" uid="uid://cuwy8ivq6qstf" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_kwwa1"]
 [ext_resource type="Script" uid="uid://bxuel0su36adg" path="res://scripts/world_1.gd" id="1_us2e2"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cjm2io4ucmdll" path="res://scripts/health.gd" id="17_un572"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_un572"]
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="19_pd0bf"]
+[ext_resource type="Script" uid="uid://6awdsvql0bo3" path="res://scripts/heart_rigid.gd" id="21_eqpc4"]
 [ext_resource type="PackedScene" uid="uid://qq5gk0063gfc" path="res://prefabs/heart_rigid.tscn" id="22_eqpc4"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="22_hyu7s"]
 
@@ -478,11 +479,18 @@ position = Vector2(106, -71)
 [node name="enemy5" parent="enemy" instance=ExtResource("15_l6637")]
 position = Vector2(41, 8)
 
-[node name="heart_rigid" parent="." instance=ExtResource("22_eqpc4")]
+[node name="heart_rigid" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("21_eqpc4")
+
+[node name="heart_rigid" parent="heart_rigid" instance=ExtResource("22_eqpc4")]
 
 [node name="player" parent="." instance=ExtResource("3_cmxnd")]
 position = Vector2(19, 128)
 collision_mask = 18
 
+[connection signal="body_entered" from="heart_rigid" to="heart_rigid" method="_on_body_entered"]
+[connection signal="collected" from="heart_rigid" to="player" method="_on_heart_rigid_collected"]
+[connection signal="collected" from="heart_rigid/heart_rigid" to="heart_rigid" method="_on_heart_rigid_collected"]
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]

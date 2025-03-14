@@ -27,8 +27,8 @@ signal player_stats_changed
 
 func _ready() -> void:
 	emit_signal("player_stats_changed", self)
-	var item = get_node("hearts")
-	#item.connect("collected", self, "_on_hearts_collect")
+	var rigidbody = get_node("../heart_rigid")
+	rigidbody.collected.connect(_on_heart_rigid_collected)
 	
 func _process(delta: float) -> void:
 	var health_recovery := 0.0 if !collect_heart else 20.0
@@ -177,5 +177,5 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
 
-func _on_hearts_collected() -> void:
-	collect_heart = true
+func _on_heart_rigid_collected() -> void:
+	print("fumegou ate que enfim")

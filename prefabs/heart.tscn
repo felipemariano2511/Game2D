@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [node name="heart" type="Area2D" groups=["hearts"]]
-collision_layer = 16
+collision_layer = 0
 script = ExtResource("1_sjxak")
 
 [node name="collision" type="CollisionShape2D" parent="." groups=["hearts"]]

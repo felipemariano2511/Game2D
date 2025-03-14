@@ -110,6 +110,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Button_quit" type="Button" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
+anchor_left = -0.0133333
 anchor_right = -0.0133333
 offset_left = 179.0
 offset_top = 104.0
