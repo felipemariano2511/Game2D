@@ -287,6 +287,12 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_j51am")
 centered = false
 
+[node name="sky2" type="Sprite2D" parent="background/05"]
+position = Vector2(-8, -318)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_j51am")
+centered = false
+
 [node name="04" type="ParallaxLayer" parent="background"]
 position = Vector2(-8, -150)
 motion_scale = Vector2(0.3, 1)
@@ -303,6 +309,14 @@ motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(432, 0)
 
 [node name="clouds_anim" type="Sprite2D" parent="background/03"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_03p0r")
+position = Vector2(-7, -157)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_03p0r")
+centered = false
+
+[node name="clouds_anim2" type="Sprite2D" parent="background/03"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_03p0r")
 scale = Vector2(1.5, 1.5)
@@ -339,7 +353,7 @@ layer_1/name = "decorations"
 layer_1/tile_data = PackedInt32Array(458756, 65538, 1, 458762, 327681, 1, 458775, 327681, 1, 393229, 196609, 5, 524295, 65537, 5, 524296, 65537, 5, 65555, 65537, 5, 262166, 65537, 5, 524313, 65537, 5, 524319, 65537, 5, 524321, 65537, 5, 524323, 65537, 5, 458785, 589825, 1)
 
 [node name="fire_ball" parent="." instance=ExtResource("2_4eyuj")]
-position = Vector2(4, -203)
+position = Vector2(-1, -239)
 
 [node name="coins" type="Node2D" parent="."]
 physics_interpolation_mode = 1
@@ -385,8 +399,8 @@ position = Vector2(1, 2)
 [node name="moving_platform1" parent="moving_platform" instance=ExtResource("14_ekkqh")]
 position = Vector2(427, 8)
 
-[node name="moving_platform2" parent="." instance=ExtResource("14_ekkqh")]
-position = Vector2(118, 84)
+[node name="moving_platform2" parent="moving_platform" instance=ExtResource("14_ekkqh")]
+position = Vector2(117, 82)
 move_horizontal = false
 
 [node name="falling_platform" type="Node2D" parent="."]
@@ -459,8 +473,16 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jvnjm")
 frame_progress = 0.545376
 
-[node name="chest" parent="." instance=ExtResource("22_hyu7s")]
+[node name="chests" type="Node2D" parent="."]
+
+[node name="chest" parent="chests" instance=ExtResource("22_hyu7s")]
 position = Vector2(272, 138)
+
+[node name="chest2" parent="chests" instance=ExtResource("22_hyu7s")]
+position = Vector2(183, 74)
+
+[node name="chest3" parent="chests" instance=ExtResource("22_hyu7s")]
+position = Vector2(362, 75)
 
 [node name="enemy" type="Node2D" parent="."]
 position = Vector2(151, 126)
@@ -476,9 +498,10 @@ position = Vector2(-72, -5)
 position = Vector2(106, -71)
 
 [node name="enemy5" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(41, 8)
+position = Vector2(-154, -387)
 
 [node name="heart_rigid" parent="." instance=ExtResource("22_eqpc4")]
+position = Vector2(-4, -378)
 
 [node name="player" parent="." instance=ExtResource("3_cmxnd")]
 position = Vector2(19, 128)
