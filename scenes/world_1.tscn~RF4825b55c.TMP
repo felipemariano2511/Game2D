@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ciiya6ycj2m5v"]
+[gd_scene load_steps=39 format=3 uid="uid://ciiya6ycj2m5v"]
 
 [ext_resource type="Texture2D" uid="uid://cuwy8ivq6qstf" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_kwwa1"]
 [ext_resource type="Script" uid="uid://bxuel0su36adg" path="res://scripts/world_1.gd" id="1_us2e2"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cjm2io4ucmdll" path="res://scripts/health.gd" id="17_un572"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_un572"]
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="19_pd0bf"]
+[ext_resource type="PackedScene" uid="uid://qq5gk0063gfc" path="res://prefabs/heart_rigid.tscn" id="22_eqpc4"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="22_hyu7s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_03p0r"]
@@ -396,7 +397,7 @@ position = Vector2(572, 138)
 position = Vector2(1, 2)
 
 [node name="moving_platform1" parent="moving_platform" instance=ExtResource("14_ekkqh")]
-position = Vector2(520, 20)
+position = Vector2(513, 9)
 
 [node name="moving_platform2" parent="moving_platform" instance=ExtResource("14_ekkqh")]
 position = Vector2(117, 82)
@@ -408,7 +409,7 @@ move_horizontal = false
 position = Vector2(458, 120)
 
 [node name="falling_platform2" parent="falling_platform" instance=ExtResource("16_qheke")]
-position = Vector2(461, -6)
+position = Vector2(459, -4)
 
 [node name="falling_platform3" parent="falling_platform" instance=ExtResource("16_qheke")]
 position = Vector2(460, 37)
@@ -487,71 +488,23 @@ position = Vector2(362, 75)
 position = Vector2(151, 126)
 
 [node name="enemy1" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(22, 13)
+position = Vector2(19, 11)
 
-[node name="enemy2" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(-20, 9)
+[node name="enemy26" parent="enemy" instance=ExtResource("15_l6637")]
+position = Vector2(266, -39)
 
-[node name="enemy3" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(354, -53)
-
-[node name="enemy4" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(410, 12)
-
-[node name="enemy5" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(365, -1)
-
-[node name="enemy6" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(320, -63)
-
-[node name="enemy7" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(407, -76)
-
-[node name="enemy8" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(114, -188)
-
-[node name="enemy9" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(266, -219)
-
-[node name="enemy10" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(317, -123)
-
-[node name="enemy11" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(347, 1)
-
-[node name="enemy12" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(245, -26)
-
-[node name="enemy13" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(180, 9)
-
-[node name="enemy14" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(71, -20)
-
-[node name="enemy15" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(157, -109)
-
-[node name="enemy16" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(103, -73)
-
-[node name="enemy17" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(68, -93)
-
-[node name="enemy18" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(-138, -107)
-
-[node name="enemy19" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(-26, -107)
-
-[node name="enemy20" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(-77, -25)
-
-[node name="enemy21" parent="enemy" instance=ExtResource("15_l6637")]
-position = Vector2(120, -153)
+[node name="enemy27" parent="enemy" instance=ExtResource("15_l6637")]
+position = Vector2(-132, -67)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("3_cmxnd")]
 position = Vector2(19, 128)
 collision_mask = 18
 
+[node name="hurt_rigid" parent="." instance=ExtResource("22_eqpc4")]
+
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
+[connection signal="collected" from="hurt_rigid/heart" to="player" method="_on_heart_collected"]
+
+[editable path="chests/chest"]
+[editable path="hurt_rigid"]

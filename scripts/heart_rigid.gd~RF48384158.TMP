@@ -1,16 +1,15 @@
-extends Area2D
+extends RigidBody2D
 
 signal collected
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$anim.play("idle")
-
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	pass	
 
-func _on_body_entered(body: Node2D) -> void:
+
+func _on_heart_collected() -> void:
 	emit_signal("collected")
-	queue_free()
+	print("passou")

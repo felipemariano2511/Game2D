@@ -19,7 +19,7 @@ var health := 100.0
 var max_health := 100.0
 var mana := 100.0
 var max_mana := 70.0
-var mana_recovery := 1.3
+var mana_recovery := 5.0
 var collect_heart := false
 
 signal player_stats_changed
@@ -27,8 +27,10 @@ signal player_stats_changed
 
 func _ready() -> void:
 	emit_signal("player_stats_changed", self)
-	var item = get_node("hearts")
-	#item.connect("collected", self, "_on_hearts_collect")
+	var rigidbody_scene = load("res://prefabs/heart_rigid.tscn")
+	var rigidbody = rigidbody_scene.instantiate()
+	rigidbody.collected.connect(self._on_heart_rigid_collected)
+	add_child(rigidbody)
 	
 func _process(delta: float) -> void:
 	var health_recovery := 0.0 if !collect_heart else 20.0
@@ -177,5 +179,8 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
 
-func _on_hearts_collected() -> void:
-	collect_heart = true
+func _on_heart_rigid_collected() -> void:
+	print("fumegou ate que enfim1")
+
+func _on_heart_collected() -> void:
+	print("fumegou ate que enfim2")
