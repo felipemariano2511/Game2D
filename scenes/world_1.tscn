@@ -478,12 +478,6 @@ frame_progress = 0.545376
 [node name="chest" parent="chests" instance=ExtResource("22_hyu7s")]
 position = Vector2(272, 138)
 
-[node name="chest2" parent="chests" instance=ExtResource("22_hyu7s")]
-position = Vector2(183, 74)
-
-[node name="chest3" parent="chests" instance=ExtResource("22_hyu7s")]
-position = Vector2(362, 75)
-
 [node name="enemy" type="Node2D" parent="."]
 position = Vector2(151, 126)
 
@@ -502,10 +496,13 @@ position = Vector2(-154, -387)
 
 [node name="heart_rigid" parent="." instance=ExtResource("22_eqpc4")]
 position = Vector2(-4, -378)
+collision_mask = 18
 
 [node name="player" parent="." instance=ExtResource("3_cmxnd")]
 position = Vector2(19, 128)
 collision_mask = 18
 
+[connection signal="destroy_rigid" from="chests/chest" to="heart_rigid" method="_on_chest_destroy_rigid"]
+[connection signal="collected_heart" from="heart_rigid" to="player" method="_on_heart_rigid_collected_heart"]
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]

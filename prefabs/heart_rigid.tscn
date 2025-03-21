@@ -18,5 +18,4 @@ shape = SubResource("RectangleShape2D_dst23")
 
 [node name="heart" parent="." instance=ExtResource("1_8vnjv")]
 
-[connection signal="collected" from="." to="." method="_on_collected"]
 [connection signal="collected" from="heart" to="." method="_on_heart_collected"]

@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-signal collected
+signal collected_heart
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -10,6 +10,8 @@ func _process(delta: float) -> void:
 	pass	
 
 
-func _on_heart_collected() -> void:
-	emit_signal("collected")
+
+
+
+func _on_chest_destroy_rigid() -> void:
 	queue_free()
