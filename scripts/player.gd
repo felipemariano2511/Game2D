@@ -27,10 +27,15 @@ signal player_stats_changed
 
 func _ready() -> void:
 	emit_signal("player_stats_changed", self)
+<<<<<<< HEAD
 	var rigidbody_scene = load("res://prefabs/heart_rigid.tscn")
 	var rigidbody = rigidbody_scene.instantiate()
 	rigidbody.collected.connect(self._on_heart_rigid_collected)
 	add_child(rigidbody)
+=======
+	var collected_heart = get_node("../heart_rigid/heart")
+	collected_heart.collected.connect(teste)
+>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03
 	
 func _process(delta: float) -> void:
 	var health_recovery := 0.0 if !collect_heart else 20.0
@@ -179,8 +184,13 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
 
+<<<<<<< HEAD
 func _on_heart_rigid_collected() -> void:
 	print("fumegou ate que enfim1")
 
 func _on_heart_collected() -> void:
 	print("fumegou ate que enfim2")
+=======
+func teste():
+	print("fumegou ate que enfim")
+>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03

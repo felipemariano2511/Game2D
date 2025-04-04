@@ -13,4 +13,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	emit_signal("collected")
+<<<<<<< HEAD
 	queue_free()
+=======
+	#queue_free()
+>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03

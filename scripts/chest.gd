@@ -1,6 +1,10 @@
 extends Area2D
 
 const heart_instance = preload("res://prefabs/heart_rigid.tscn")
+<<<<<<< HEAD
+=======
+signal destroy_rigid
+>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,4 +26,8 @@ func create_heart():
 	get_parent().call_deferred("add_child", heart)
 	heart.global_position = $spawn_heart.global_position
 	heart.apply_impulse(Vector2(randi_range(-50, 50), -150))
+<<<<<<< HEAD
+=======
+	emit_signal("destroy_rigid")
+>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03
 	

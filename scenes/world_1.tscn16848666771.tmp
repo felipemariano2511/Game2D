@@ -20,7 +20,10 @@
 [ext_resource type="Script" uid="uid://cjm2io4ucmdll" path="res://scripts/health.gd" id="17_un572"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_un572"]
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="19_pd0bf"]
+<<<<<<<< HEAD:scenes/world_1.tscn16848666771.tmp
 [ext_resource type="Script" uid="uid://6awdsvql0bo3" path="res://scripts/heart_rigid.gd" id="21_eqpc4"]
+========
+>>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03:scenes/world_1.tscn
 [ext_resource type="PackedScene" uid="uid://qq5gk0063gfc" path="res://prefabs/heart_rigid.tscn" id="22_eqpc4"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="22_hyu7s"]
 
@@ -288,6 +291,12 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_j51am")
 centered = false
 
+[node name="sky2" type="Sprite2D" parent="background/05"]
+position = Vector2(-8, -318)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_j51am")
+centered = false
+
 [node name="04" type="ParallaxLayer" parent="background"]
 position = Vector2(-8, -150)
 motion_scale = Vector2(0.3, 1)
@@ -304,6 +313,14 @@ motion_scale = Vector2(0.4, 1)
 motion_mirroring = Vector2(432, 0)
 
 [node name="clouds_anim" type="Sprite2D" parent="background/03"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_03p0r")
+position = Vector2(-7, -157)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("8_03p0r")
+centered = false
+
+[node name="clouds_anim2" type="Sprite2D" parent="background/03"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_03p0r")
 scale = Vector2(1.5, 1.5)
@@ -340,7 +357,7 @@ layer_1/name = "decorations"
 layer_1/tile_data = PackedInt32Array(458756, 65538, 1, 458762, 327681, 1, 458775, 327681, 1, 393229, 196609, 5, 524295, 65537, 5, 524296, 65537, 5, 65555, 65537, 5, 262166, 65537, 5, 524313, 65537, 5, 524319, 65537, 5, 524321, 65537, 5, 524323, 65537, 5, 458785, 589825, 1)
 
 [node name="fire_ball" parent="." instance=ExtResource("2_4eyuj")]
-position = Vector2(4, -203)
+position = Vector2(-1, -239)
 
 [node name="coins" type="Node2D" parent="."]
 physics_interpolation_mode = 1
@@ -386,8 +403,8 @@ position = Vector2(1, 2)
 [node name="moving_platform1" parent="moving_platform" instance=ExtResource("14_ekkqh")]
 position = Vector2(427, 8)
 
-[node name="moving_platform2" parent="." instance=ExtResource("14_ekkqh")]
-position = Vector2(118, 84)
+[node name="moving_platform2" parent="moving_platform" instance=ExtResource("14_ekkqh")]
+position = Vector2(117, 82)
 move_horizontal = false
 
 [node name="falling_platform" type="Node2D" parent="."]
@@ -460,7 +477,13 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jvnjm")
 frame_progress = 0.545376
 
+<<<<<<<< HEAD:scenes/world_1.tscn16848666771.tmp
 [node name="chest" parent="." instance=ExtResource("22_hyu7s")]
+========
+[node name="chests" type="Node2D" parent="."]
+
+[node name="chest" parent="chests" instance=ExtResource("22_hyu7s")]
+>>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03:scenes/world_1.tscn
 position = Vector2(272, 138)
 
 [node name="enemy" type="Node2D" parent="."]
@@ -477,6 +500,7 @@ position = Vector2(-72, -5)
 position = Vector2(106, -71)
 
 [node name="enemy5" parent="enemy" instance=ExtResource("15_l6637")]
+<<<<<<<< HEAD:scenes/world_1.tscn16848666771.tmp
 position = Vector2(41, 8)
 
 [node name="heart_rigid" type="Area2D" parent="."]
@@ -484,13 +508,25 @@ collision_layer = 0
 script = ExtResource("21_eqpc4")
 
 [node name="heart_rigid" parent="heart_rigid" instance=ExtResource("22_eqpc4")]
+========
+position = Vector2(-154, -387)
+
+[node name="heart_rigid" parent="." instance=ExtResource("22_eqpc4")]
+position = Vector2(-4, -378)
+collision_mask = 18
+>>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03:scenes/world_1.tscn
 
 [node name="player" parent="." instance=ExtResource("3_cmxnd")]
 position = Vector2(19, 128)
 collision_mask = 18
 
+<<<<<<<< HEAD:scenes/world_1.tscn16848666771.tmp
 [connection signal="body_entered" from="heart_rigid" to="heart_rigid" method="_on_body_entered"]
 [connection signal="collected" from="heart_rigid" to="player" method="_on_heart_rigid_collected"]
 [connection signal="collected" from="heart_rigid/heart_rigid" to="heart_rigid" method="_on_heart_rigid_collected"]
+========
+[connection signal="destroy_rigid" from="chests/chest" to="heart_rigid" method="_on_chest_destroy_rigid"]
+[connection signal="collected_heart" from="heart_rigid" to="player" method="_on_heart_rigid_collected_heart"]
+>>>>>>>> 69b8ffca9883176b47ac6cd15001624479c1dd03:scenes/world_1.tscn
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
