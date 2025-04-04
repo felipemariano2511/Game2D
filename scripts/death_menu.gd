@@ -7,10 +7,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("start"):
+		get_tree().change_scene_to_file("res://scenes/initial_menu.tscn")
+	elif Input.is_action_just_pressed("esc"):
+		get_tree().quit()
 
 func _on_button_start_button_down() -> void:
-	get_tree().change_scene_to_file("res://scenes/world_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/initial_menu.tscn")
 
 
 func _on_button_quit_button_down() -> void:
