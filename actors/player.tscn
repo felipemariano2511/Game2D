@@ -326,7 +326,7 @@ _data = {
 }
 
 [node name="player" type="CharacterBody2D"]
-collision_mask = 6
+collision_mask = 134
 script = ExtResource("1_sweqy")
 
 [node name="texture" type="Sprite2D" parent="."]
@@ -335,8 +335,7 @@ texture = ExtResource("3_1jxqw")
 hframes = 9
 
 [node name="hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+collision_mask = 132
 script = ExtResource("7_33vod")
 
 [node name="collision" type="CollisionShape2D" parent="hurtbox"]
@@ -380,5 +379,6 @@ collision_mask = 4
 
 [connection signal="player_stats_changed" from="." to="." method="_on_player_stats_changed"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="hurtbox" to="." method="_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="animation_finished" from="anim" to="hurtbox" method="_on_anim_animation_finished"]

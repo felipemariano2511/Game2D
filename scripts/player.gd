@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var ray_left: RayCast2D = $ray_left
 @onready var ray_down: RayCast2D = $ray_down
 @onready var ray_top: RayCast2D = $ray_top
+@onready var end_point: Area2D = $"../End-Point"
 
 const SPEED = 80.0
 const JUMP_VELOCITY = -280.0
@@ -178,9 +179,24 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	is_hurted = true
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
-
+	
 func _on_heart_rigid_collected() -> void:
-	print("fumegou ate que enfim1")
+	pass
 
 func _on_heart_collected() -> void:
-	print("fumegou ate que enfim2")
+	pass
+
+func load_scene(scene_name: String):
+	get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
+
+
+
+
+func _on_end_point_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	print("entrou1")
+	if end_point.is_in_group("Level_End"):
+		var next_level = end_point.next_level
+		print("entrou2")
+		if next_level:
+			print("entrou3")
+			call_deferred("load_scene", next_level)

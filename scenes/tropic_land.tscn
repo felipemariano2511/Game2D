@@ -334,6 +334,7 @@ motion_scale = Vector2(0.6, 1)
 motion_mirroring = Vector2(432, 0)
 
 [node name="water" type="Sprite2D" parent="background/01"]
+position = Vector2(107, 47)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("7_0184c")
 centered = false
@@ -545,4 +546,4 @@ position = Vector2(120, -153)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
 position = Vector2(19, 128)
-collision_mask = 18
+collision_mask = 146
