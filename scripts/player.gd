@@ -27,6 +27,7 @@ signal player_stats_changed
 
 
 func _ready() -> void:
+	ItemManager.connect("item_collected", Callable(self, "_on_item_collected"))
 	emit_signal("player_stats_changed", self)
 	var rigidbody_scene = load("res://prefabs/heart_rigid.tscn")
 	var rigidbody = rigidbody_scene.instantiate()
@@ -183,20 +184,18 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 func _on_heart_rigid_collected() -> void:
 	pass
 
-func _on_heart_collected() -> void:
-	pass
 
 func load_scene(scene_name: String):
 	get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
 
 
-
-
 func _on_end_point_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print("entrou1")
-	if end_point.is_in_group("Level_End"):
+	if end_point.is_in_group("Level-End"):
 		var next_level = end_point.next_level
-		print("entrou2")
 		if next_level:
-			print("entrou3")
 			call_deferred("load_scene", next_level)
+			
+func _on_item_collected(item_type: String):
+	if item_type == "heart":
+		print("Você coletou um coração!")
+		# Aumentar vida, tocar som, etc.

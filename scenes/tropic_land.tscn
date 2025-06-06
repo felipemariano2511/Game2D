@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://h4ksig7qwbjl"]
+[gd_scene load_steps=40 format=3 uid="uid://h4ksig7qwbjl"]
 
 [ext_resource type="Texture2D" uid="uid://8ryt7ebqinxg" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="1_oy3i7"]
+[ext_resource type="Script" uid="uid://dawy8x2ncywa3" path="res://scripts/tropic_land.gd" id="1_ukksj"]
 [ext_resource type="Texture2D" uid="uid://0yebyjbf7hxq" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="2_ukksj"]
 [ext_resource type="Texture2D" uid="uid://bqklkvvjc2w28" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/4 - Background_clouds.png" id="3_40qk4"]
 [ext_resource type="Shader" uid="uid://dfntwhvgcqen8" path="res://shaders/moviment_clouds.gdshader" id="4_yt7v1"]
@@ -269,6 +270,7 @@ animations = [{
 }]
 
 [node name="Tropic_Land" type="Node2D"]
+script = ExtResource("1_ukksj")
 
 [node name="background" type="ParallaxBackground" parent="."]
 
@@ -481,68 +483,23 @@ position = Vector2(362, 75)
 [node name="enemy" type="Node2D" parent="."]
 position = Vector2(151, 126)
 
-[node name="enemy1" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(22, 13)
-
-[node name="enemy2" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(-20, 9)
-
-[node name="enemy3" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(354, -53)
-
 [node name="enemy4" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(410, 12)
-
-[node name="enemy5" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(365, -1)
-
-[node name="enemy6" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(320, -63)
 
 [node name="enemy7" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(407, -76)
 
-[node name="enemy8" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(114, -188)
-
-[node name="enemy9" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(266, -219)
-
-[node name="enemy10" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(317, -123)
-
-[node name="enemy11" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(347, 1)
-
 [node name="enemy12" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(245, -26)
 
-[node name="enemy13" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(180, 9)
-
-[node name="enemy14" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(71, -20)
-
 [node name="enemy15" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(157, -109)
-
-[node name="enemy16" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(103, -73)
-
-[node name="enemy17" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(68, -93)
 
 [node name="enemy18" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(-138, -107)
 
 [node name="enemy19" parent="enemy" instance=ExtResource("21_4lbss")]
 position = Vector2(-26, -107)
-
-[node name="enemy20" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(-77, -25)
-
-[node name="enemy21" parent="enemy" instance=ExtResource("21_4lbss")]
-position = Vector2(120, -153)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
 position = Vector2(19, 128)

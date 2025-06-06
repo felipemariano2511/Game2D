@@ -1,5 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://cvl1yunde2ax0"]
+[gd_scene load_steps=39 format=3 uid="uid://cvl1yunde2ax0"]
 
+[ext_resource type="Script" uid="uid://28keq77u1rbe" path="res://scripts/forest.gd" id="1_c2vyo"]
 [ext_resource type="Texture2D" uid="uid://buq4nylvbo3be" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="1_qavbn"]
 [ext_resource type="Texture2D" uid="uid://blgblval35iaw" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="2_c2vyo"]
 [ext_resource type="Texture2D" uid="uid://c3on1vj3pt00c" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="3_65srx"]
@@ -21,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="20_a8hxt"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="21_eomrh"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="22_a88r6"]
+[ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="23_65srx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqi"]
 resource_name = "Terrain"
@@ -264,6 +266,7 @@ animations = [{
 }]
 
 [node name="Tropic_Land" type="Node2D"]
+script = ExtResource("1_c2vyo")
 
 [node name="background" type="ParallaxBackground" parent="."]
 
@@ -479,17 +482,8 @@ position = Vector2(151, 126)
 [node name="enemy1" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(22, 13)
 
-[node name="enemy2" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(-20, 9)
-
-[node name="enemy3" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(354, -53)
-
 [node name="enemy4" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(410, 12)
-
-[node name="enemy5" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(365, -1)
 
 [node name="enemy6" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(320, -63)
@@ -503,42 +497,15 @@ position = Vector2(114, -188)
 [node name="enemy9" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(266, -219)
 
-[node name="enemy10" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(317, -123)
-
-[node name="enemy11" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(347, 1)
-
-[node name="enemy12" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(245, -26)
-
-[node name="enemy13" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(180, 9)
-
 [node name="enemy14" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(71, -20)
-
-[node name="enemy15" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(157, -109)
-
-[node name="enemy16" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(103, -73)
-
-[node name="enemy17" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(68, -93)
-
-[node name="enemy18" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(-138, -107)
-
-[node name="enemy19" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(-26, -107)
-
-[node name="enemy20" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(-77, -25)
-
-[node name="enemy21" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(120, -153)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_a88r6")]
 position = Vector2(19, 128)
 collision_mask = 18
+
+[node name="End-Point" parent="." instance=ExtResource("23_65srx")]
+position = Vector2(710, 109)
+next_level = "winter_land"
+
+[connection signal="area_shape_entered" from="End-Point" to="player" method="_on_end_point_area_shape_entered"]
