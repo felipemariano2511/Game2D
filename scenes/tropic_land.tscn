@@ -504,3 +504,6 @@ position = Vector2(-26, -107)
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
 position = Vector2(19, 128)
 collision_mask = 146
+
+[connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
+[connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]

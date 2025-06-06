@@ -29,10 +29,6 @@ signal player_stats_changed
 func _ready() -> void:
 	ItemManager.connect("item_collected", Callable(self, "_on_item_collected"))
 	emit_signal("player_stats_changed", self)
-	var rigidbody_scene = load("res://prefabs/heart_rigid.tscn")
-	var rigidbody = rigidbody_scene.instantiate()
-	rigidbody.collected.connect(self._on_heart_rigid_collected)
-	add_child(rigidbody)
 	
 func _process(delta: float) -> void:
 	var health_recovery := 0.0 if !collect_heart else 20.0
@@ -197,5 +193,5 @@ func _on_end_point_area_shape_entered(area_rid: RID, area: Area2D, area_shape_in
 			
 func _on_item_collected(item_type: String):
 	if item_type == "heart":
-		print("Você coletou um coração!")
-		# Aumentar vida, tocar som, etc.
+		collect_heart = true
+		

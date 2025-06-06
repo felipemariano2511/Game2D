@@ -9,6 +9,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass	
 
-
-func _on_heart_collected() -> void:
-	emit_signal("collected")
+func _on_heart_body_entered(body: Node2D) -> void:
+		if body.name == "player":
+			ItemManager.collect_item("heart")
+			queue_free()
