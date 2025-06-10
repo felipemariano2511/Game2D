@@ -20,7 +20,7 @@ var health := 100.0
 var max_health := 100.0
 var mana := 100.0
 var max_mana := 70.0
-var mana_recovery := 5.0
+var mana_recovery := 2.5
 var collect_heart := false
 
 signal player_stats_changed
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and is_on_floor() and !is_attacking:
 		if mana > 10:
 			is_attacking = true
-			mana = mana - 10
+			mana = mana - 20
 			emit_signal("player_stats_changed", self)
 
 	# Obter direção de entrada e lidar com movimento/desaceleração.
