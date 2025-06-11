@@ -27,6 +27,10 @@ window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+enemies=""
+
 [input]
 
 jump={
