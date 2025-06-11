@@ -512,6 +512,8 @@ collision_mask = 146
 
 [node name="End-Point" parent="." instance=ExtResource("24_40qk4")]
 position = Vector2(1153, -34)
+next_level = "death_menu"
 
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
+[connection signal="area_shape_entered" from="End-Point" to="player" method="_on_end_point_area_shape_entered"]
