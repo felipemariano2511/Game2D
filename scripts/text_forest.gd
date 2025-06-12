@@ -5,12 +5,10 @@ extends Node2D
 
 const lines : Array[String] = [
 	"Aperte enter para prosseguir...",
-	"Bem vindo a Acrelândia!",
-	"Utilize as -> setas para andar.",
-	"Utilize espaço para atirar bolas de fogo.",
-	"E não chegue perto das muriçocas!",
-	"É sério, não chegue perto delas!",
-	"Boa sorte!!!",
+	"Por que veio aqui de novo???",
+	"Aqui não tem nada...",
+	"Continue explorando...",
+	"E tome cuidado com as muriçocas!!!"
 ]
 
 func _unhandled_input(event: InputEvent) -> void:

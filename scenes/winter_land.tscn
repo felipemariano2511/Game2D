@@ -20,13 +20,13 @@
 [ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="17_75mv5"]
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="17_pht28"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_3p2jj"]
-[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="18_dqtwa"]
 [ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="19_0nlm5"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="19_y7mnc"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="20_d11np"]
 [ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="20_i4sin"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="20_v5hyj"]
 [ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="21_8ejle"]
+[ext_resource type="FontFile" uid="uid://c21emsrtbwqgc" path="res://assets/text/RevMiniPixel.ttf" id="21_byr35"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="21_o38xf"]
 [ext_resource type="PackedScene" uid="uid://shep3tguap24" path="res://actors/enemy_2.tscn" id="22_achqj"]
 [ext_resource type="Texture2D" uid="uid://dm2k3vr306ga3" path="res://assets/coins/03_Coin-Sprites.png" id="22_byr35"]
@@ -553,8 +553,8 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("18_dqtwa")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("21_byr35")
+theme_override_font_sizes/font_size = 8
 text = "0000"
 horizontal_alignment = 1
 vertical_alignment = 1

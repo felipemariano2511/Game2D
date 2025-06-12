@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cpjwxgr2tiuri" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="6_8cwnd"]
 [ext_resource type="Texture2D" uid="uid://bg3l317un0pqc" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_liw33"]
 [ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="12_wrlrt"]
-[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="13_gm2es"]
+[ext_resource type="FontFile" uid="uid://c21emsrtbwqgc" path="res://assets/text/RevMiniPixel.ttf" id="13_wrlrt"]
 [ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="14_6tafp"]
 [ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="15_0rapm"]
 [ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="16_xbbny"]
@@ -282,8 +282,8 @@ theme_override_constants/line_spacing = 0
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("13_gm2es")
-theme_override_font_sizes/font_size = 12
+theme_override_fonts/font = ExtResource("13_wrlrt")
+theme_override_font_sizes/font_size = 8
 text = "0000"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -293,6 +293,37 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_afbui")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 41.0
+offset_top = 6.0
+offset_right = 263.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_wrlrt")
+theme_override_font_sizes/font_size = 16
+text = "Parabéns, você conseguiu!!!
+
+"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 87.0
+offset_top = 32.0
+offset_right = 266.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_wrlrt")
+theme_override_font_sizes/font_size = 8
+text = "          Desenvolvedores:
+
+Felipe Mariano - 172317392
+Matheus Henrique - 172311530
+Ramon Romano - 172311597
+Vinicius Stencel - 172315471
+
+"
 
 [connection signal="button_down" from="CanvasLayer/start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="CanvasLayer/exit" to="." method="_on_exit_button_down"]
