@@ -4,7 +4,7 @@ const SPEED = 50.0
 const ATTACK_SPEED = 80.0
 const PATROL_RANGE = 50.0
 const ATTACK_DISTANCE = 50.0
-const ATTACK_DURATION = 0.4  # tempo em ataque
+const ATTACK_DURATION = 0.5  # tempo em ataque
 const PLAYER_HEAD_OFFSET_Y = -15.0  # ajuste conforme o tamanho do sprite do player
 
 @onready var texture := $texture as Sprite2D
