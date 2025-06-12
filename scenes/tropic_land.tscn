@@ -483,6 +483,12 @@ position = Vector2(183, 74)
 [node name="chest3" parent="chests" instance=ExtResource("20_kfc35")]
 position = Vector2(393, -6)
 
+[node name="chest4" parent="chests" instance=ExtResource("20_kfc35")]
+position = Vector2(790, 140)
+
+[node name="chest5" parent="chests" instance=ExtResource("20_kfc35")]
+position = Vector2(992, 139)
+
 [node name="enemies" type="Node2D" parent="."]
 position = Vector2(151, 126)
 
@@ -491,6 +497,9 @@ position = Vector2(-33, -28)
 
 [node name="enemy4" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(410, 12)
+
+[node name="enemy5" parent="enemies" instance=ExtResource("21_4lbss")]
+position = Vector2(743, 13)
 
 [node name="enemy7" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(360, -121)
@@ -510,17 +519,29 @@ position = Vector2(72, -51)
 [node name="enemy_mmuricoca" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(66, -18)
 
+[node name="enemy_mmuricoca5" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(741, -27)
+
+[node name="enemy_mmuricoca6" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(892, -195)
+
+[node name="enemy_mmuricoca7" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(722, -249)
+
+[node name="enemy_mmuricoca8" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(628, -198)
+
 [node name="enemy_mmuricoca2" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(66, -18)
 
 [node name="enemy_mmuricoca3" parent="enemies" instance=ExtResource("26_uk4hv")]
-position = Vector2(-30, -56)
+position = Vector2(-29, -68)
 
 [node name="enemy_mmuricoca4" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(162, -18)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
-position = Vector2(39, 130)
+position = Vector2(32, 119)
 collision_mask = 146
 
 [node name="End-Point" parent="." instance=ExtResource("24_40qk4")]
