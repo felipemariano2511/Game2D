@@ -79,7 +79,6 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2(direction * SPEED, 0)
 
 			if wall_detector.is_colliding():
-				print("qualquer coisa")
 				direction *= -1
 				wall_detector.position.x *= -1
 
