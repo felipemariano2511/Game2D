@@ -139,7 +139,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dpeei"]
-size = Vector2(14, 16)
+size = Vector2(14, 14)
 
 [node name="enemy" type="CharacterBody2D" groups=["enemie", "enemies"]]
 collision_layer = 4
@@ -171,7 +171,6 @@ collision_mask = 6
 collision_layer = 64
 
 [node name="collision1" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_dpeei")
 debug_color = Color(0.94072, 0.244495, 0, 0.42)
 

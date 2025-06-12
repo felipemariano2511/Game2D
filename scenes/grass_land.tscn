@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ciiya6ycj2m5v"]
+[gd_scene load_steps=46 format=3 uid="uid://ciiya6ycj2m5v"]
 
 [ext_resource type="Script" uid="uid://bxuel0su36adg" path="res://scripts/world_1.gd" id="1_bqlsx"]
 [ext_resource type="Texture2D" uid="uid://0yebyjbf7hxq" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="2_02opq"]
@@ -19,9 +19,15 @@
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="17_2i5tm"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="18_obmtm"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="19_50s1f"]
+[ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="19_ef5wm"]
+[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="20_c0soo"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="20_kdnei"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="21_revmo"]
+[ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="21_xwqbe"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="22_02opq"]
+[ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="22_qj0ri"]
+[ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="23_xsaew"]
+[ext_resource type="Texture2D" uid="uid://dm2k3vr306ga3" path="res://assets/coins/03_Coin-Sprites.png" id="24_llmd8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_03p0r"]
 shader = ExtResource("4_3nowe")
@@ -271,6 +277,17 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_35dk2"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("21_xwqbe")
+frame_1/texture = ExtResource("22_qj0ri")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("23_xsaew")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("24_llmd8")
+frame_3/duration = 1.0
+
 [node name="Grass_Land" type="Node2D"]
 light_mask = 5
 script = ExtResource("1_bqlsx")
@@ -473,10 +490,56 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_jvnjm")
 frame_progress = 0.545376
 
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("19_ef5wm")
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("20_c0soo")
+theme_override_font_sizes/font_size = 12
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_35dk2")
+
 [node name="chests" type="Node2D" parent="."]
 
 [node name="chest" parent="chests" instance=ExtResource("19_50s1f")]
 position = Vector2(272, 138)
+
+[node name="chest6" parent="chests" instance=ExtResource("19_50s1f")]
+position = Vector2(222, 139)
 
 [node name="chest2" parent="chests" instance=ExtResource("19_50s1f")]
 position = Vector2(183, 74)

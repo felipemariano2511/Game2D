@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	$anim.play("collect")
 	if body.name == "player":
-		ItemManager.collect_item("coins")
+		ItemManager.collect_item("coin")
 		queue_free()
 
 
