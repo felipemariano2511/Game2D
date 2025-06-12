@@ -7,9 +7,7 @@ var collect_coin = false
 func _ready() -> void:
 	if get_tree().current_scene.name == "End":
 		coins = ItemManager.collected_items
-		print("Aki %s" % coins)
-		
-	print(get_tree().current_scene.name)
+
 	coins_counter.text = str("%04d" % coins)
 	ItemManager.connect("item_updated", Callable(self, "_on_item_updated"))
 		
