@@ -609,8 +609,35 @@ position = Vector2(225, 4)
 [node name="enemy7" parent="enemy" instance=ExtResource("22_achqj")]
 position = Vector2(345, 4)
 
+[node name="enemy9" parent="enemy" instance=ExtResource("22_achqj")]
+position = Vector2(274, 116)
+
+[node name="enemy10" parent="enemy" instance=ExtResource("22_achqj")]
+position = Vector2(291, 115)
+
+[node name="enemy11" parent="enemy" instance=ExtResource("22_achqj")]
+position = Vector2(311, 115)
+
+[node name="enemy12" parent="enemy" instance=ExtResource("22_achqj")]
+position = Vector2(332, 115)
+
+[node name="enemy13" parent="enemy" instance=ExtResource("22_achqj")]
+position = Vector2(332, 115)
+
 [node name="enemy8" parent="enemy" instance=ExtResource("22_achqj")]
 position = Vector2(380, -76)
+
+[node name="enemy_5" parent="enemy" instance=ExtResource("23_8mjky")]
+position = Vector2(766, -81)
+
+[node name="enemy_6" parent="enemy" instance=ExtResource("23_8mjky")]
+position = Vector2(654, -38)
+
+[node name="enemy_7" parent="enemy" instance=ExtResource("23_8mjky")]
+position = Vector2(563, -41)
+
+[node name="enemy_8" parent="enemy" instance=ExtResource("23_8mjky")]
+position = Vector2(295, -29)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("21_o38xf")]
 position = Vector2(16, 131)

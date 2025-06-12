@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://hth5damxfyfp"]
+[gd_scene load_steps=32 format=4 uid="uid://bkj8y12fr0r1b"]
 
 [ext_resource type="Script" uid="uid://cfr0l3fan3bb5" path="res://scripts/end.gd" id="1_oc5t2"]
 [ext_resource type="Texture2D" uid="uid://8ryt7ebqinxg" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="2_oc5t2"]
@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://rn42dxt7d2jb" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/3 - Floating_clouds.png" id="5_stj65"]
 [ext_resource type="Texture2D" uid="uid://cpjwxgr2tiuri" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="6_8cwnd"]
 [ext_resource type="Texture2D" uid="uid://bg3l317un0pqc" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/1 - Waters_version_1.png" id="7_liw33"]
+[ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="12_wrlrt"]
+[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="13_gm2es"]
+[ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="14_6tafp"]
+[ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="15_0rapm"]
+[ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="16_xbbny"]
+[ext_resource type="Texture2D" uid="uid://dm2k3vr306ga3" path="res://assets/coins/03_Coin-Sprites.png" id="17_l3jns"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wrlrt"]
 shader = ExtResource("4_sf0ys")
@@ -134,6 +140,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_afbui"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("14_6tafp")
+frame_1/texture = ExtResource("15_0rapm")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("16_xbbny")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("17_l3jns")
+frame_3/duration = 1.0
+
 [node name="End" type="Node2D"]
 script = ExtResource("1_oc5t2")
 
@@ -231,6 +248,51 @@ offset_left = 176.0
 offset_top = 102.0
 offset_right = 254.0
 offset_bottom = 131.0
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_wrlrt")
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("13_gm2es")
+theme_override_font_sizes/font_size = 12
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_afbui")
 
 [connection signal="button_down" from="CanvasLayer/start" to="." method="_on_start_button_down"]
 [connection signal="button_down" from="CanvasLayer/exit" to="." method="_on_exit_button_down"]

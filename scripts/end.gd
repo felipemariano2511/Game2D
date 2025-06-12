@@ -1,5 +1,5 @@
 extends Node2D
-
+@onready var coins_counter: Label = $HUD/Control/container/coins_container/coins_counter
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
