@@ -33,8 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 		
-	if anim.name == "hurt":
-		print("ola")
+	if anim.current_animation == "hurt":
 		await anim.animation_finished
 		queue_free()
 
@@ -95,4 +94,5 @@ func _physics_process(delta: float) -> void:
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hurt":
 		queue_free()
+		
 	

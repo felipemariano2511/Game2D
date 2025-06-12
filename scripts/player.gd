@@ -113,7 +113,7 @@ func cast_fireball():
 ### ✅ Função corrigida: dano ao encostar em inimigo
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		var knockback = Vector2(-sign(velocity.x) * 100, -75)
+		var knockback = Vector2(-sign(velocity.x) * 150, -150)
 		take_damage(knockback)
 
 func follow_camera(camera):

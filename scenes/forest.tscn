@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cvl1yunde2ax0"]
+[gd_scene load_steps=40 format=3 uid="uid://cvl1yunde2ax0"]
 
 [ext_resource type="Script" uid="uid://28keq77u1rbe" path="res://scripts/forest.gd" id="1_c2vyo"]
 [ext_resource type="Texture2D" uid="uid://buq4nylvbo3be" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="1_qavbn"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="20_a8hxt"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="21_eomrh"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="22_a88r6"]
+[ext_resource type="PackedScene" uid="uid://daqwbkemrd3vb" path="res://actors/enemy_3.tscn" id="22_di3lw"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="23_65srx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqi"]
@@ -573,10 +574,13 @@ position = Vector2(407, -76)
 position = Vector2(114, -188)
 
 [node name="enemy9" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(266, -219)
+position = Vector2(296, -216)
 
 [node name="enemy14" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(71, -20)
+
+[node name="enemy_3" parent="enemy" instance=ExtResource("22_di3lw")]
+position = Vector2(336, -172)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_a88r6")]
 position = Vector2(19, 128)

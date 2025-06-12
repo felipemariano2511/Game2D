@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 @onready var wall_detector := $wall_detector as RayCast2D
 @onready var fall_detector := $fall_detector as RayCast2D
 @onready var texture := $texture as Sprite2D
+@onready var anim := $anim 
 
 var direction := -1
 
@@ -28,6 +29,10 @@ func _physics_process(delta: float) -> void:
 		texture.flip_h = false
 	else:
 		texture.flip_h = true
+		
+	if anim.current_animation == "hurt":
+		await anim.animation_finished
+		queue_free()
 		
 	velocity.x = direction * SPEED * delta
 
