@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b4b2mhvfr7vlr" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="4_4tl4r"]
 [ext_resource type="Texture2D" uid="uid://cuwy8ivq6qstf" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="4_q67vr"]
 [ext_resource type="Texture2D" uid="uid://bfrt3n3oxwxex" path="res://sprites/Sprite Pack 8/7 - Barry Cherry/Victory_Pose (32 x 32).png" id="5_rxiwm"]
-[ext_resource type="Texture2D" uid="uid://bht5xx8uilaph" path="res://assets/Sprite Pack 8/6 - Angie/Idle_2 (32 x 32).png" id="6_noxxc"]
-[ext_resource type="Texture2D" uid="uid://clmq2s8i1mpod" path="res://assets/Sprite Pack 8/4 - Percy/Idle (32 x 32).png" id="7_ffmvr"]
+[ext_resource type="Texture2D" uid="uid://bht5xx8uilaph" path="res://sprites/Sprite Pack 8/6 - Angie/Idle_2 (32 x 32).png" id="6_noxxc"]
+[ext_resource type="Texture2D" uid="uid://clmq2s8i1mpod" path="res://sprites/Sprite Pack 8/4 - Percy/Idle (32 x 32).png" id="7_ffmvr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2ggi"]
 shader = ExtResource("3_2idfa")
