@@ -486,7 +486,7 @@ position = Vector2(151, 126)
 position = Vector2(22, 13)
 
 [node name="enemy4" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(282, 4)
+position = Vector2(279, -4)
 
 [node name="enemy5" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(412, -47)
@@ -510,7 +510,7 @@ position = Vector2(306, -38)
 position = Vector2(260, -40)
 
 [node name="enemy17" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(507, 8)
+position = Vector2(511, 7)
 
 [node name="enemy18" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(492, 9)
@@ -522,19 +522,19 @@ position = Vector2(279, 13)
 position = Vector2(324, -11)
 
 [node name="enemy21" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(387, 8)
+position = Vector2(396, 8)
 
 [node name="enemy22" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(430, -21)
+position = Vector2(435, -30)
 
 [node name="enemy23" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(475, -14)
+position = Vector2(497, -20)
 
 [node name="enemy24" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(396, -17)
 
 [node name="enemy25" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(454, -2)
+position = Vector2(451, -12)
 
 [node name="enemy26" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(418, -18)
@@ -543,22 +543,22 @@ position = Vector2(418, -18)
 position = Vector2(373, -15)
 
 [node name="enemy28" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(465, -14)
+position = Vector2(474, -17)
 
 [node name="enemy29" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(354, 2)
 
 [node name="enemy30" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(301, 6)
+position = Vector2(304, 12)
 
 [node name="enemy31" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(466, 13)
+position = Vector2(470, 11)
 
 [node name="enemy32" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(444, 11)
 
 [node name="enemy33" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(369, 15)
+position = Vector2(370, 9)
 
 [node name="enemy34" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(338, 11)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://h4ksig7qwbjl"]
+[gd_scene load_steps=43 format=3 uid="uid://h4ksig7qwbjl"]
 
 [ext_resource type="Texture2D" uid="uid://8ryt7ebqinxg" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="1_oy3i7"]
 [ext_resource type="Script" uid="uid://dawy8x2ncywa3" path="res://scripts/tropic_land.gd" id="1_ukksj"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="22_i7eww"]
 [ext_resource type="PackedScene" uid="uid://shep3tguap24" path="res://actors/enemy_2.tscn" id="22_yt7v1"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="24_40qk4"]
+[ext_resource type="PackedScene" uid="uid://daqwbkemrd3vb" path="res://actors/enemy_3.tscn" id="26_uk4hv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxsn8"]
 shader = ExtResource("4_yt7v1")
@@ -482,29 +483,41 @@ position = Vector2(183, 74)
 [node name="chest3" parent="chests" instance=ExtResource("20_kfc35")]
 position = Vector2(393, -6)
 
-[node name="enemy" type="Node2D" parent="."]
+[node name="enemies" type="Node2D" parent="."]
 position = Vector2(151, 126)
 
-[node name="enemy2" parent="enemy" instance=ExtResource("22_yt7v1")]
+[node name="enemy2" parent="enemies" instance=ExtResource("22_yt7v1")]
 position = Vector2(-33, -28)
 
-[node name="enemy4" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy4" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(410, 12)
 
-[node name="enemy7" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy7" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(360, -121)
 
-[node name="enemy12" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy12" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(240, 13)
 
-[node name="enemy15" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy15" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(164, -99)
 
-[node name="enemy18" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy18" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(-47, -18)
 
-[node name="enemy19" parent="enemy" instance=ExtResource("21_4lbss")]
+[node name="enemy19" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(72, -51)
+
+[node name="enemy_mmuricoca" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(66, -18)
+
+[node name="enemy_mmuricoca2" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(66, -18)
+
+[node name="enemy_mmuricoca3" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(-30, -56)
+
+[node name="enemy_mmuricoca4" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(162, -18)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
 position = Vector2(39, 130)

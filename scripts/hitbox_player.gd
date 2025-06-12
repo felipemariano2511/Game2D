@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.name == "hurtbox":
+	if area.is_in_group("enemies"):
 		anim.play("hurt")
 		
 		

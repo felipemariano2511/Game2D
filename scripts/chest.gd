@@ -10,7 +10,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	$anim.play("default")
+	if body.name == "player":
+		$anim.play("default")
 
 func _on_anim_animation_finished() -> void:
 	create_heart()
