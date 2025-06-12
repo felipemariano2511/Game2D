@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://shep3tguap24"]
 
-[ext_resource type="Script" uid="uid://ctvqevooxvjw7" path="res://scripts/enemy_2.gd" id="1_0ioss"]
+[ext_resource type="Script" uid="uid://ctvqevooxvjw7" path="res://actors/enemy_2.gd" id="1_0ioss"]
 [ext_resource type="Texture2D" uid="uid://ci7dv5glh23y7" path="res://sprites/Sprite Pack 8/6 - Angie/Running (32 x 32).png" id="1_b1u1m"]
 [ext_resource type="PackedScene" uid="uid://de03w2gt8o8jb" path="res://prefabs/hitbox.tscn" id="2_42hiq"]
 [ext_resource type="Texture2D" uid="uid://dtvp3lt8h7f8p" path="res://sprites/Sprite Pack 8/6 - Angie/Hurt (32 x 32).png" id="3_ypa23"]

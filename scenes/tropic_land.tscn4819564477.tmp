@@ -510,15 +510,6 @@ position = Vector2(72, -51)
 [node name="enemy_mmuricoca" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(66, -18)
 
-[node name="enemy_mmuricoca2" parent="enemies" instance=ExtResource("26_uk4hv")]
-position = Vector2(66, -18)
-
-[node name="enemy_mmuricoca3" parent="enemies" instance=ExtResource("26_uk4hv")]
-position = Vector2(-30, -56)
-
-[node name="enemy_mmuricoca4" parent="enemies" instance=ExtResource("26_uk4hv")]
-position = Vector2(162, -18)
-
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
 position = Vector2(39, 130)
 collision_mask = 146

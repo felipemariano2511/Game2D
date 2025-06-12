@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var hitbox_player := $hitbox as Area2D
 @onready var end_point: Area2D = $"../End-Point"
 
+
 const SPEED = 80.0
 const JUMP_VELOCITY = -280.0
 const FIREBALL := preload("res://item/fire_ball.tscn")
@@ -135,9 +136,6 @@ func take_damage(knockback_force := Vector2.ZERO, duration := 0.25):
 	is_hurted = true
 	await get_tree().create_timer(0.7).timeout
 	is_hurted = false
-
-func _on_heart_rigid_collected() -> void:
-	pass
 
 func load_scene(scene_name: String):
 	get_tree().change_scene_to_file("res://scenes/" + scene_name + ".tscn")
