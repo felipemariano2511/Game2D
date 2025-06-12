@@ -1,54 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://shep3tguap24"]
 
-[ext_resource type="Script" uid="uid://ctvqevooxvjw7" path="res://actors/enemy_2.gd" id="1_0ioss"]
+[ext_resource type="Script" uid="uid://ctvqevooxvjw7" path="res://scripts/enemy_2.gd" id="1_0ioss"]
 [ext_resource type="Texture2D" uid="uid://ci7dv5glh23y7" path="res://sprites/Sprite Pack 8/6 - Angie/Running (32 x 32).png" id="1_b1u1m"]
 [ext_resource type="PackedScene" uid="uid://de03w2gt8o8jb" path="res://prefabs/hitbox.tscn" id="2_42hiq"]
 [ext_resource type="Texture2D" uid="uid://dtvp3lt8h7f8p" path="res://sprites/Sprite Pack 8/6 - Angie/Hurt (32 x 32).png" id="3_ypa23"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b1u1m"]
 height = 22.0
-
-[sub_resource type="Animation" id="Animation_8deph"]
-resource_name = "walk"
-length = 0.6
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_b1u1m")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
 
 [sub_resource type="Animation" id="Animation_agika"]
 length = 0.001
@@ -130,6 +88,48 @@ tracks/2/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_8deph"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_b1u1m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ariyy"]
 _data = {
 &"RESET": SubResource("Animation_agika"),
@@ -142,14 +142,14 @@ size = Vector2(20, 22)
 
 [node name="enemy2" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 66
 script = ExtResource("1_0ioss")
 
 [node name="texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_b1u1m")
 hframes = 6
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_b1u1m")
 
@@ -171,9 +171,10 @@ position = Vector2(3, 5)
 target_position = Vector2(0, 16)
 collision_mask = 6
 
-[node name="hurtbox" parent="." instance=ExtResource("2_42hiq")]
+[node name="hitbox" parent="." groups=["enemies"] instance=ExtResource("2_42hiq")]
+collision_layer = 64
 
-[node name="Collision1" type="CollisionShape2D" parent="hurtbox"]
+[node name="Collision1" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_0ioss")
 debug_color = Color(0.994674, 0.0661003, 0, 0.42)
