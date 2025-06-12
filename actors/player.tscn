@@ -334,7 +334,8 @@ position = Vector2(0, -2)
 texture = ExtResource("3_1jxqw")
 hframes = 9
 
-[node name="hurtbox" type="Area2D" parent="."]
+[node name="hurtbox" type="Area2D" parent="." groups=["player"]]
+collision_layer = 3
 collision_mask = 132
 script = ExtResource("7_33vod")
 
@@ -356,26 +357,6 @@ libraries = {
 position = Vector2(14, 2)
 
 [node name="remote" type="RemoteTransform2D" parent="."]
-
-[node name="ray_right" type="RayCast2D" parent="."]
-position = Vector2(-7, 9)
-target_position = Vector2(20, 1)
-collision_mask = 4
-
-[node name="ray_down" type="RayCast2D" parent="."]
-position = Vector2(0, -7)
-target_position = Vector2(0, 27)
-collision_mask = 4
-
-[node name="ray_top" type="RayCast2D" parent="."]
-position = Vector2(0, 13)
-target_position = Vector2(0, -24)
-collision_mask = 4
-
-[node name="ray_left" type="RayCast2D" parent="."]
-position = Vector2(5, 10)
-target_position = Vector2(-19, 0)
-collision_mask = 4
 
 [connection signal="player_stats_changed" from="." to="." method="_on_player_stats_changed"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
