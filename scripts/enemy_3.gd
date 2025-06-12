@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 		
-	if anim.name == "hurt":
+	if anim.current_animation == "hurt":
 		await anim.animation_finished
 		queue_free()
 
@@ -80,7 +80,7 @@ func _physics_process(delta: float) -> void:
 
 			if wall_detector.is_colliding():
 				direction *= -1
-				wall_detector.scale.x *= -1
+				wall_detector.position.x *= -1
 
 			if not anim.is_playing():
 				anim.play("fly")
@@ -89,3 +89,9 @@ func _physics_process(delta: float) -> void:
 	texture.flip_h = velocity.x > 0
 
 	move_and_slide()
+	
+func _on_anim_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hurt":
+		queue_free()
+		
+	

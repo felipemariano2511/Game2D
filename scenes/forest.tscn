@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cvl1yunde2ax0"]
+[gd_scene load_steps=47 format=3 uid="uid://cvl1yunde2ax0"]
 
 [ext_resource type="Script" uid="uid://28keq77u1rbe" path="res://scripts/forest.gd" id="1_c2vyo"]
 [ext_resource type="Texture2D" uid="uid://buq4nylvbo3be" path="res://assets/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="1_qavbn"]
@@ -20,9 +20,16 @@
 [ext_resource type="Script" uid="uid://v0wrimc0ak4k" path="res://scripts/mana.gd" id="18_igjew"]
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="19_o06ba"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="20_a8hxt"]
+[ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="20_soql2"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="21_eomrh"]
+[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="21_u01n2"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="22_a88r6"]
+[ext_resource type="PackedScene" uid="uid://daqwbkemrd3vb" path="res://actors/enemy_3.tscn" id="22_di3lw"]
+[ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="22_qu0hn"]
+[ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="23_0fv5i"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="23_65srx"]
+[ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="24_4uh7g"]
+[ext_resource type="Texture2D" uid="uid://dm2k3vr306ga3" path="res://assets/coins/03_Coin-Sprites.png" id="25_len2l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_60uqi"]
 resource_name = "Terrain"
@@ -265,6 +272,17 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fcatt"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("22_qu0hn")
+frame_1/texture = ExtResource("23_0fv5i")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("24_4uh7g")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("25_len2l")
+frame_3/duration = 1.0
+
 [node name="Tropic_Land" type="Node2D"]
 script = ExtResource("1_c2vyo")
 
@@ -468,6 +486,49 @@ color = Color(0.372831, 0.714315, 0.636821, 1)
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_7kscg")
 
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_soql2")
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("21_u01n2")
+theme_override_font_sizes/font_size = 12
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_fcatt")
+
 [node name="chests" type="Node2D" parent="."]
 
 [node name="chest" parent="chests" instance=ExtResource("20_a8hxt")]
@@ -573,10 +634,13 @@ position = Vector2(407, -76)
 position = Vector2(114, -188)
 
 [node name="enemy9" parent="enemy" instance=ExtResource("21_eomrh")]
-position = Vector2(266, -219)
+position = Vector2(296, -216)
 
 [node name="enemy14" parent="enemy" instance=ExtResource("21_eomrh")]
 position = Vector2(71, -20)
+
+[node name="enemy_3" parent="enemy" instance=ExtResource("22_di3lw")]
+position = Vector2(336, -172)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_a88r6")]
 position = Vector2(19, 128)

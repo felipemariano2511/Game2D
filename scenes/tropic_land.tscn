@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://h4ksig7qwbjl"]
+[gd_scene load_steps=50 format=3 uid="uid://h4ksig7qwbjl"]
 
 [ext_resource type="Texture2D" uid="uid://8ryt7ebqinxg" path="res://assets/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="1_oy3i7"]
 [ext_resource type="Script" uid="uid://dawy8x2ncywa3" path="res://scripts/tropic_land.gd" id="1_ukksj"]
@@ -22,9 +22,15 @@
 [ext_resource type="Texture2D" uid="uid://b1nlh02s376bx" path="res://assets/Mini FX, Items & UI/Common Pick-ups/Small_Coin (16 x 16).png" id="19_v4iew"]
 [ext_resource type="PackedScene" uid="uid://bvqh5lrsdxtpg" path="res://prefabs/chest.tscn" id="20_kfc35"]
 [ext_resource type="PackedScene" uid="uid://pveu7haka2br" path="res://actors/enemy.tscn" id="21_4lbss"]
+[ext_resource type="Script" uid="uid://caumqcslln13i" path="res://scripts/control_hud.gd" id="21_f07q6"]
+[ext_resource type="Texture2D" uid="uid://biuicvpny4kg7" path="res://assets/coins/00_Coin-Sprites.png" id="21_s2qpi"]
+[ext_resource type="Texture2D" uid="uid://cadoouepow4g3" path="res://assets/coins/01_Coin-Sprites.png" id="22_1pj5a"]
+[ext_resource type="FontFile" uid="uid://brqricbupows3" path="res://assets/text/at01.ttf" id="22_avsyd"]
 [ext_resource type="PackedScene" uid="uid://cavuc8muhsvce" path="res://actors/player.tscn" id="22_i7eww"]
 [ext_resource type="PackedScene" uid="uid://shep3tguap24" path="res://actors/enemy_2.tscn" id="22_yt7v1"]
+[ext_resource type="Texture2D" uid="uid://bfud13rivj126" path="res://assets/coins/02_Coin-Sprites.png" id="23_f07q6"]
 [ext_resource type="PackedScene" uid="uid://ckf24tu23wued" path="res://prefabs/end_point.tscn" id="24_40qk4"]
+[ext_resource type="Texture2D" uid="uid://dm2k3vr306ga3" path="res://assets/coins/03_Coin-Sprites.png" id="25_avsyd"]
 [ext_resource type="PackedScene" uid="uid://daqwbkemrd3vb" path="res://actors/enemy_3.tscn" id="26_uk4hv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uxsn8"]
@@ -269,7 +275,18 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="Tropic_Land" type="Node2D"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_avsyd"]
+frames = 4
+speed_scale = 3.0
+frame_0/texture = ExtResource("21_s2qpi")
+frame_1/texture = ExtResource("22_1pj5a")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("23_f07q6")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("25_avsyd")
+frame_3/duration = 1.0
+
+[node name="Tropic_Land2" type="Node2D"]
 script = ExtResource("1_ukksj")
 
 [node name="background" type="ParallaxBackground" parent="."]
@@ -472,6 +489,49 @@ color = Color(0.372831, 0.714315, 0.636821, 1)
 position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_7kscg")
 
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("21_f07q6")
+
+[node name="container" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="coins_container" type="HBoxContainer" parent="HUD/Control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+
+[node name="coins_counter" type="Label" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("22_avsyd")
+theme_override_font_sizes/font_size = 12
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="coins_icon" type="TextureRect" parent="HUD/Control/container/coins_container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_avsyd")
+
 [node name="chests" type="Node2D" parent="."]
 
 [node name="chest" parent="chests" instance=ExtResource("20_kfc35")]
@@ -483,14 +543,20 @@ position = Vector2(183, 74)
 [node name="chest3" parent="chests" instance=ExtResource("20_kfc35")]
 position = Vector2(393, -6)
 
+[node name="chest4" parent="chests" instance=ExtResource("20_kfc35")]
+position = Vector2(790, 140)
+
+[node name="chest5" parent="chests" instance=ExtResource("20_kfc35")]
+position = Vector2(992, 139)
+
 [node name="enemies" type="Node2D" parent="."]
 position = Vector2(151, 126)
 
-[node name="enemy2" parent="enemies" instance=ExtResource("22_yt7v1")]
-position = Vector2(-33, -28)
-
 [node name="enemy4" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(410, 12)
+
+[node name="enemy5" parent="enemies" instance=ExtResource("21_4lbss")]
+position = Vector2(743, 13)
 
 [node name="enemy7" parent="enemies" instance=ExtResource("21_4lbss")]
 position = Vector2(360, -121)
@@ -510,22 +576,37 @@ position = Vector2(72, -51)
 [node name="enemy_mmuricoca" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(66, -18)
 
+[node name="enemy_mmuricoca5" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(741, -27)
+
+[node name="enemy_mmuricoca6" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(892, -195)
+
+[node name="enemy_mmuricoca7" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(722, -249)
+
+[node name="enemy_mmuricoca8" parent="enemies" instance=ExtResource("26_uk4hv")]
+position = Vector2(628, -198)
+
 [node name="enemy_mmuricoca2" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(66, -18)
 
 [node name="enemy_mmuricoca3" parent="enemies" instance=ExtResource("26_uk4hv")]
-position = Vector2(-30, -56)
+position = Vector2(-29, -68)
 
 [node name="enemy_mmuricoca4" parent="enemies" instance=ExtResource("26_uk4hv")]
 position = Vector2(162, -18)
 
+[node name="enemy2" parent="enemies" instance=ExtResource("22_yt7v1")]
+position = Vector2(-20, -27)
+
 [node name="player" parent="." groups=["player"] instance=ExtResource("22_i7eww")]
-position = Vector2(39, 130)
+position = Vector2(32, 119)
 collision_mask = 146
 
 [node name="End-Point" parent="." instance=ExtResource("24_40qk4")]
 position = Vector2(1153, -34)
-next_level = "death_menu"
+next_level = "end"
 
 [connection signal="player_stats_changed" from="player" to="HUD/Health" method="_on_player_player_stats_changed"]
 [connection signal="player_stats_changed" from="player" to="HUD/Mana" method="_on_player_player_stats_changed"]
